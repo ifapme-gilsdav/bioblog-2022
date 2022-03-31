@@ -4,6 +4,8 @@ require "model.php";
 require "../helpers/form-helper.php";
 require "../helpers/auth-helper.php";
 
+#region Post logic
+
 function validateInputs($inputs) {
     $errors = [];
     if (empty(trim($inputs['title']))) {
@@ -33,5 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { // if (isset($_POST))
         }
     }
 }
- 
+
+#endregion Post logic
+
 require "view.php";
