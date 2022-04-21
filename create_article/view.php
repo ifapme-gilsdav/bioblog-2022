@@ -42,6 +42,17 @@
                 <?php endif; ?>
             </div>
 
+            <div class="form-group">
+                <label>
+                    Image
+                    <input
+                        class="form-control"
+                        type="file"
+                        name="image"
+                        accept="image/*" />
+                </label>
+            </div>
+
             <input type="submit" value="Save" class="btn btn-primary" />
 
         </form>
