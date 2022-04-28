@@ -1,3 +1,4 @@
+<?php include "../vendors/autoload.php"; ?>
 <?php require_once "../helpers/form-helper.php"; ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,15 @@
                         <div class="card-body">
                             <h5 class="card-title"><?= $article["title"] ?></h5>
                             <time class="card-subtitle"><?= date_format($article["creationDate"], "d/m/Y") ?></time>
-                            <p class="card-text"><?= $article["content"] ?></p>
+                            <?php
+                                try {
+                                    $quill = new \DBlackborough\Quill\Render($article["content"]);
+                                    $content = $quill->render();
+                                } catch(Exception $e) {
+                                    $content = $article["content"];
+                                }
+                            ?>
+                            <p class="card-text"><?= $content ?></p>
                         </div>
                     </article>
                 </div>

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { // if (isset($_POST))
     
     $article = [
         'title' => sanitize_input($_POST['title']),
-        'content' => sanitize_input($_POST['content'])
+        'content' => $_POST['content']
     ];
 
     if (sizeof($validations) === 0) {
