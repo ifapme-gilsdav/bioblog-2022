@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<?php $title="Articles"; require "../head.php"; ?>
+<?php $title="Articles"; $site_description="Vous pouvez trouver ici la liste de nos articles"; require "../head.php"; ?>
 <body>
     <?php require "../header.php"; ?>
 
