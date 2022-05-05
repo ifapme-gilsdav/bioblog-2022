@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php $title="Login"; require "../head.php"; ?>
+<?php $title="Login"; $site_description="Login"; require "../head.php"; ?>
 <body>
     <?php require "../header.php"; ?>
 
@@ -30,6 +30,9 @@
                             placeholder="Password" />
                     </label>
                 </div>
+                <?php if($hasError): ?>
+                    <p class="text-danger">Problème de connexion. Veuillez réessayer.</p>
+                <?php endif; ?>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success" >Login</button>
                 </div>

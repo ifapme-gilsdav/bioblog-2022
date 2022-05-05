@@ -7,21 +7,23 @@ require_once '../helpers/auth-helper.php';
 
 #region Post logic
 
+$hasError = false;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_infos = [
         'username' => sanitize_input($_POST['username']),
         'password' => sanitize_input($_POST['password']),
     ];
 
-    $user = 'bob';
-    $pass = password_hash('bob', PASSWORD_DEFAULT);
-
-    if ($user_infos['username'] === $user && password_verify($user_infos['password'], $pass)) {
+    $user = checkUser($user_infos['username'], $user_infos['password']);
+    if (isset($user)) {
         init_session();
-        $_SESSION['login'] = $user_infos['username'];
+        $_SESSION['login'] = $user;
         
         $redirect = isset($_GET['redirect']) ? urldecode($_GET['redirect']) : '../articles' ;
         redirect($redirect);
+    } else {
+        $hasError = true;
     }
 }
 
