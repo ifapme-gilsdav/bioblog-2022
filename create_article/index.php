@@ -4,6 +4,8 @@ require "model.php";
 require "../helpers/form-helper.php";
 require "../helpers/auth-helper.php";
 
+prevent_not_connected(true);
+
 #region Post logic
 
 function validateInputs($inputs) {
