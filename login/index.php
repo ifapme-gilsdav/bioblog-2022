@@ -5,6 +5,9 @@ require './model.php';
 require_once '../helpers/form-helper.php';
 require_once '../helpers/auth-helper.php';
 
+// echo password_hash('blabla', PASSWORD_DEFAULT);
+// die();
+
 #region Post logic
 
 $hasError = false;

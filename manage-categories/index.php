@@ -5,6 +5,12 @@ require './model.php';
 
 init_session();
 
+// Fix here
+if(!isset($_SESSION['categories'])) {
+    $_SESSION['categories'] = [];
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['create'])) {
         $latest = end($_SESSION['categories']);
@@ -18,6 +24,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 [ 'id' => 1, 'name' => $_POST['name'] ]
             ];
         }
+    }
+    if (isset($_POST['save'])) {
+        // $index = array_search($_POST['id'], $_SESSION['categories']);
+        // var_dump($index);
+        foreach($_SESSION['categories'] as $key => $category) {
+            if (strval($category['id']) === $_POST['id']) {
+                $_SESSION['categories'][$key]['name'] = $_POST['name'];
+
+                // $categories = $_SESSION['categories'];
+                // $current_category = $categories[$key];
+                // $current_category['name'] = $_POST['name'];
+                
+                break;
+            }
+        }
+    }
+
+    if (isset($_POST['delete'])) {
+        
+        function filter_category($category) {
+            return strval($category['id']) !== $_POST['id'];
+        }
+
+        $_SESSION['categories'] = array_filter($_SESSION['categories'], 'filter_category');
+
     }
 }
 
